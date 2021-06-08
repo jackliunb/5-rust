@@ -1,0 +1,14 @@
+//第一题
+call宏: 用来定义模块里的可调用函数,每一个外部交易都会触发一个可调用函数,并根据交易体信息也就是函数参数, 更新链上状态
+Error宏:可调用函数里的错误类型,不能给它们添加数据, 并通过metadata暴露给客户端,错误发生是触发system.ExtrinsicFailed事件,包含了对应错误的索引信息.
+Hooks宏:
+Runtime模块里存在保留函数,用于执行特定的逻辑,on_initialize,在每个区块的开头执行,on_finalize在每个区块结束时执行,offchain_worker为开头且是链外执行,
+不占用链上的资源,on_runtime_upgrade为当有runtime升级时才会执行,用来迁移数据
+
+存储数据结构:
+单值类型:存储某种单一类型的值,如布尔,数值,枚举,结构体等
+简单映射类型:storageMap类型,用来保存键值对,单值类型都可以用作key或者value.
+双值映射类型:StorageDoubleMap类型,使用两个key来索引value,用于快速删除key1对应的任意记录,也可以遍历key1对应的所有记录
+
+
+
